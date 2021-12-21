@@ -52,15 +52,15 @@ def A_Star(Grid, dest: Grid_Position, start: Grid_Position):
             if x_pos == len(Grid) - 1 and adj_cell_x[i] == 1:
                 x_pos = current_pos.x
                 y_pos = current_pos.y + adj_cell_y[i]
-                post = Grid_Position(x_pos, y_pos)
+                
             if y_pos == 0 and adj_cell_y[i] == -1:
                 x_pos = current_pos.x + adj_cell_x[i]
                 y_pos = current_pos.y
-                post = Grid_Position(x_pos, y_pos)
+              
             else:
                 x_pos = current_pos.x + adj_cell_x[i]
                 y_pos = current_pos.y + adj_cell_y[i]
-                post = Grid_Position(x_pos, y_pos)
+              
             if x_pos < 12 and y_pos < 12 and x_pos >= 0 and y_pos >= 0:
                 if Grid[x_pos][y_pos] == 1:
                     if not visited_blocks[x_pos][y_pos]:
@@ -132,24 +132,24 @@ def main():
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
     destination = Grid_Position(10, 0)
     starting_position = Grid_Position(4, 11)
-    start = timeit.default_timer()
+    start1 = timeit.default_timer()
     res = A_Star(maze, destination, starting_position)
     if res != -1:
         print("Shortest path steps = ", res)
     else:
         print("Path does not exit")
-    stop = timeit.default_timer()
-    print("running_time: ",format(stop-start, '.8f'))
+    stop1 = timeit.default_timer()
+    print("running_time: ",format(stop1-start1, '.8f'))
 
     print()
-    start1 = timeit.default_timer()
+    start2 = timeit.default_timer()
     res2 = bfs(maze, destination, starting_position)
     if res2 != -1:
         print("Steps with backtracking = ", res2)
     else:
         print("Path does not exit")
-    stop1 = timeit.default_timer()
-    print("running_time: ",format(stop1-start1, '.8f'))
+    stop2 = timeit.default_timer()
+    print("running_time: ",format(stop2-start2, '.8f'))
 if __name__ == '__main__':
     print("main start\n")
     main()
